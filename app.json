@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "anime",
+    "name": "Ainara",
     "slug": "anime",
-    "version": "1.0.0",
+    "version": "Initial Release",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "anime",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "ios": {
       "icon": "./assets/expo.icon"
     },
