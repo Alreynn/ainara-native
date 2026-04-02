@@ -10,7 +10,7 @@ export default function RootLayout() {
                   headerShown: false,
                   contentStyle: { backgroundColor: '#000000' },
               }} />
-              <Stack.Screen name="Details" options={{
+              <Stack.Screen name="Genre" options={{
                   headerTitle: "",
                   presentation: 'card',
                   contentStyle: { backgroundColor: '#000000' },
@@ -19,13 +19,34 @@ export default function RootLayout() {
                   headerTintColor: 'white',
                   headerStyle: { backgroundColor: '#02061730' }
               }} />
-              <Stack.Screen name="Watch" options={{
+              <Stack.Screen name="Search" options={{
+                  headerTitle: "",
+                  presentation: 'card',
+                  contentStyle: { backgroundColor: '#000000' },
+                  headerTransparent: true,
+                  headerBackTitleVisible: false,
+                  headerTintColor: 'white',
+                  headerStyle: { backgroundColor: '#02061730' }
+              }} />
+              <Stack.Screen name="Details" options={{
                   headerTitle: "",
                   presentation: 'modal',
                   contentStyle: { backgroundColor: '#000000' },
                   headerTransparent: true,
                   headerBackTitleVisible: false,
                   headerTintColor: 'white',
+                  headerStyle: { backgroundColor: '#02061730' }
+              }} />
+              <Stack.Screen name="Watch" options={{
+                  headerTitle: "",
+                  presentation: 'formSheet',
+                  sheetAllowedDetents: [0.5, 1],
+                  sheetInitialDetentsIndex: 1,
+                  sheetGrabberVisible: true,
+                //   contentStyle: { backgroundColor: '#000000' },
+                //   headerTransparent: true,
+                //   headerBackTitleVisible: false,
+                //   headerTintColor: 'white',
               }} />
           </Stack>
         </ThemeProvider>

@@ -12,11 +12,11 @@ interface Parameters {
 
 const AnimeBox = ({animeId, title, poster, episodes, lastReleaseDate}: Parameters) => {
     return (
-        <Link href={{ pathname: './Details', params: { animeId, title, poster } }} asChild>
+        <Link href={{ pathname: '/Details', params: { animeId, title, poster } }} asChild>
             <Pressable className="grow-0 shrink-0 border border-indigo-300 w-[31.5vw] rounded-lg p-3">
                 <Image source={{uri: poster}} className="w-full aspect-[3/4] rounded-md" />
                 <View className="mt-1 -space-y-1">
-                    <Text className="truncate text-ellipsis font-bold text-lg leading-tight max-h-5 text-white">{title}</Text>
+                    <Text numberOfLines={2} ellipsizeMode="tail" className="font-bold text-lg leading-tight text-white">{title}</Text>
                     {episodes && (
                         <Text className="text-sm text-white">Ep {episodes}</Text>
                     )}

@@ -15,7 +15,7 @@ const EpisodeBox = ({episodeId, title, eps, date}: Parameters) => {
     
     return (
         <Link href={{ pathname: './Watch', params: { episodeId, title, eps } }} asChild>
-            <Pressable className="w-full border border-gray-500 p-1.5 px-2.5 rounded-xl">
+            <Pressable className="w-full border border-gray-500 p-1.5 px-3 rounded-xl">
                 <Text className="font-bold text-xl text-white">Episode {eps}</Text>
                 <Text className="text-sm text-white">{dateFix(date)}</Text>
             </Pressable>

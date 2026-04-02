@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useLocalSearchParams } from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Alert, View, Text } from 'react-native';
+import { Alert, View, Pressable, Text } from 'react-native';
 import { WebView } from 'react-native-webview'
+import { Ionicons } from '@expo/vector-icons';
+import { ChangeEpsSkeleton } from './components/skeletons.tsx'
+import ChangeEps from './components/ChangeEps';
 
 interface Stream {
     defaultStreamingUrl: string;
 }
 
 const Watch = () => {
-    const [streamLink, setStreamLink] = useState<Stream>("");
+    const [fetchedData, setFetchedData] = useState<Stream>("");
+    const [isLoaded, setLoaded] = useState(false);
     const { episodeId, title, eps } = useLocalSearchParams<{
         episodeId: string;
         title: string;
@@ -24,7 +27,8 @@ const Watch = () => {
         try {
             const stream = await fetch(`https://www.sankavollerei.com/anime/episode/${episodeId}`);
             const response = await stream.json();
-            setStreamLink(response.data.defaultStreamingUrl);
+            setFetchedData(response.data);
+            setLoaded(true);
         } catch(e) {
             Alert.alert(
                 "Error!",
@@ -48,19 +52,41 @@ const Watch = () => {
     }
     
     return (
-        <SafeAreaView className="flex-1 bg-indigo-500">
+        <View className="flex-1 bg-indigo-500">
             <View className="aspect-video">
                 <WebView
                     allowsFullscreenVideo={true}
-                    source={{ uri: streamLink }}
+                    source={{ uri: fetchedData.defaultStreamingUrl }}
                 />
+            </View>
+            
+            <View className="flex flex-row justify-between mt-3 mx-2">
+                {!isLoaded ? (
+                    <>
+                        <ChangeEpsSkeleton />
+                        <ChangeEpsSkeleton />
+                    </>
+                ) : (
+                    <>
+                        {fetchedData?.hasPrevEpisode ? (
+                            <ChangeEps text="Ep Sebelumnya" isPrev={true} />
+                        ) : (
+                            <Pressable></Pressable>
+                        )}
+                        
+                        {fetchedData?.hasNextEpisode && (
+                            <ChangeEps text="Ep Selanjutnya" isNext={true} />
+                        )}
+                    </>
+                )}
+                
             </View>
             
             <View className="p-3">
                 <Text className="font-bold text-2xl text-white">{getTitle(title)}</Text>
                 <Text className="text-white">Episode {eps || getEpisodeNumber(episodeId)}</Text>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
