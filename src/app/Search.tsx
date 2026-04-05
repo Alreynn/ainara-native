@@ -15,6 +15,7 @@ const Search = () => {
     const router = useRouter();
     const [searchedAnime, setSearchedAnime] = useState<Params[]>([]);
     const [isLoaded, setLoaded] = useState(false);
+    const [isNotFound, setNotFound] = useState(false);
     const { query } = useLocalSearchParams<{
         query: string;
     }>();
@@ -30,7 +31,7 @@ const Search = () => {
             setSearchedAnime(response.data.animeList);
             setLoaded(true);
         } catch(e) {
-            alert(e);
+            setNotFound(true);
         }
     }
     
@@ -61,17 +62,28 @@ const Search = () => {
         <SafeAreaView className="flex-1 bg-indigo-500 p-3 pt-20">
             <Text className="font-bold text-3xl mb-3 text-white">Kamu mencari "{query}"</Text>
             
-            {!isLoaded ? (
+            {!isLoaded && !isNotFound && (
                 <View className="flex flex-row flex-wrap gap-y-5">
                     {repeatment(<SkeletonBox />, 9)}
                 </View>
-            ) : (
-                <FlatList
-                    data={searchedAnime}
-                    contentContainerStyle={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', rowGap: 5 * 4, }}
-                    renderItem={({item}) => <AnimeBox animeId={item.animeId} title={getTitle(item.title)} poster={item.poster} />}
-                    keyExtractor={item => item.animeId}
-                />
+            )}
+            
+            {isLoaded && !isNotFound && (
+                <>
+                    <FlatList
+                        data={searchedAnime}
+                        contentContainerStyle={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', rowGap: 5 * 4, }}
+                        renderItem={({item}) => <AnimeBox animeId={item.animeId} title={getTitle(item.title)} poster={item.poster} />}
+                        keyExtractor={item => item.animeId}
+                    />
+                </>
+            )}
+            
+            {isNotFound && (
+                <View className="flex justify-center items-center h-screen w-full">
+                    <Text className="font-bold text-2xl text-white">Anime tidak ditemukan!</Text>
+                    <Text className="text-white">Cari anime lain.</Text>
+                </View>
             )}
         </SafeAreaView>
     )

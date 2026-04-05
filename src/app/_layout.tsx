@@ -1,10 +1,12 @@
 import { ThemeProvider, DarkTheme } from '@react-navigation/native'
+import { StatusBar } from 'react-native';
 import { Stack } from "expo-router";
 import '../../global.css'
 
 export default function RootLayout() {
   return (
       <ThemeProvider value={DarkTheme}>
+        <StatusBar barStyle="light-content" />
           <Stack>
               <Stack.Screen name="(tabs)" options={{
                   headerShown: false,
@@ -38,15 +40,10 @@ export default function RootLayout() {
                   headerStyle: { backgroundColor: '#02061730' }
               }} />
               <Stack.Screen name="Watch" options={{
-                  headerTitle: "",
                   presentation: 'formSheet',
                   sheetAllowedDetents: [0.5, 1],
                   sheetInitialDetentsIndex: 1,
                   sheetGrabberVisible: true,
-                //   contentStyle: { backgroundColor: '#000000' },
-                //   headerTransparent: true,
-                //   headerBackTitleVisible: false,
-                //   headerTintColor: 'white',
               }} />
           </Stack>
         </ThemeProvider>

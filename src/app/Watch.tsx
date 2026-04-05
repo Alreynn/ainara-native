@@ -13,6 +13,7 @@ interface Stream {
 const Watch = () => {
     const [fetchedData, setFetchedData] = useState<Stream>("");
     const [isLoaded, setLoaded] = useState(false);
+    const hasPrevNextEp = fetchedData?.hasPrevEpisode || fetchedData?.hasNextEpisode
     const { episodeId, title, eps } = useLocalSearchParams<{
         episodeId: string;
         title: string;
@@ -30,10 +31,7 @@ const Watch = () => {
             setFetchedData(response.data);
             setLoaded(true);
         } catch(e) {
-            Alert.alert(
-                "Error!",
-                (e)
-            )
+            
         }
     }
     
@@ -56,11 +54,14 @@ const Watch = () => {
             <View className="aspect-video">
                 <WebView
                     allowsFullscreenVideo={true}
-                    source={{ uri: fetchedData.defaultStreamingUrl }}
+                    source={{ uri: fetchedData?.defaultStreamingUrl }}
                 />
             </View>
             
-            <View className="flex flex-row justify-between mt-3 mx-2">
+            {/* This need some fixes! */}
+            <View className={`flex flex-row justify-between
+            ${(!isLoaded || hasPrevNextEp) && "mt-3 mx-2"}
+            `}>
                 {!isLoaded ? (
                     <>
                         <ChangeEpsSkeleton />
@@ -71,7 +72,7 @@ const Watch = () => {
                         {fetchedData?.hasPrevEpisode ? (
                             <ChangeEps text="Ep Sebelumnya" isPrev={true} />
                         ) : (
-                            <Pressable></Pressable>
+                            <View />
                         )}
                         
                         {fetchedData?.hasNextEpisode && (
@@ -79,7 +80,6 @@ const Watch = () => {
                         )}
                     </>
                 )}
-                
             </View>
             
             <View className="p-3">

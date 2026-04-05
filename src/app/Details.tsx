@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, SafeAreaView, View, ScrollView, Pressable, FlatList, Image, Text } from 'react-native';
+import { SafeAreaView, View, ScrollView, Pressable, FlatList, Image, Text } from 'react-native';
 import { useLocalSearchParams } from 'expo-router'
 import { EpisodeSkeleton, SkeletonText, SkeletonTags } from './components/skeletons.tsx'
 import { Link } from 'expo-router';
@@ -106,7 +106,7 @@ const Details = () => {
                         <View>
                             <FlatList
                                 data={details?.genreList}
-                                contentContainerStyle={{ display: 'flex', gap: 3 * 4, marginTop: 2 * 4, width: '100%', overflow: 'auto' }}
+                                contentContainerStyle={{ display: 'flex', columnGap: 3 * 4, rowGap: 2 * 4, marginTop: 2 * 4, width: '100%' }}
                                 renderItem={({item}) =>
                                     <Link href={{ pathname: '/Genre', params: { genreId: item.genreId } }} asChild>
                                         <Pressable>

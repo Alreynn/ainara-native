@@ -6,23 +6,23 @@ const TabLayout = () => {
   return (
     <Tabs screenOptions={{ 
         headerShown: false,
-        tabBarActiveTintColor: '#ddd',
-        tabBarInactiveTintColor: 'white',
+        tabBarActiveTintColor: '#fff',
+        tabBarInactiveTintColor: 'rgb(212,220,236)',
         tabBarStyle: {
             backgroundColor: '#3B82F6',
         }
     }}>
         <Tabs.Screen name="index" options={{
             title: "Home",
-            tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={24} color="white"></Ionicons>
+            tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? "home" : "home-outline"} size={24} color={color}></Ionicons>
         }} />
         <Tabs.Screen name="Release" options={{
             title: "Jadwal",
-            tabBarIcon: ({ color, size }) => <Ionicons name="calendar-outline" size={24} color="white"></Ionicons>
+            tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? "calendar" : "calendar-outline"} size={24} color={color}></Ionicons>
         }} />
         <Tabs.Screen name="AllAnime" options={{
             title: "Semua",
-            tabBarIcon: ({ color, size }) => <Ionicons name="tv-outline" size={24} color="white"></Ionicons>
+            tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? "tv" : "tv-outline"} size={24} color={color}></Ionicons>
         }} />
     </Tabs>
   )

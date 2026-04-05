@@ -4,7 +4,7 @@
     "slug": "anime",
     "version": "Initial Release",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon.png", // App Icon
     "scheme": "anime",
     "userInterfaceStyle": "dark",
     "ios": {
@@ -17,7 +17,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.alreynn.ainara"
     },
     "web": {
       "output": "static",
@@ -30,7 +31,7 @@
         {
           "backgroundColor": "#208AEF",
           "android": {
-            "image": "./assets/images/splash-icon.png",
+            "image": "./assets/images/splash-icon.png", // Splash Icon
             "imageWidth": 76
           }
         }
@@ -39,6 +40,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "29a4eb89-859d-415d-823d-e3a33260d2b0"
+      }
     }
   }
 }

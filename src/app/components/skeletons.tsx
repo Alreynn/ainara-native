@@ -25,6 +25,13 @@ export const SkeletonBox = ({episodes, lastReleaseDate}: Configuration) => {
         </View>
     )
 }
+export const AllAnimeSkeleton = () => {
+    return (
+        <View className="flex flex-col grow-0 shrink-0 border border-indigo-300 w-full rounded-xl p-3">
+            <View className="w-72 h-4 bg-gray-400 rounded-md animate-pulse"></View>
+        </View>
+    )
+}
 export const EpisodeSkeleton = () => {
     return (
         <View className="flex gap-y-2 w-full border border-gray-500 p-1.5 px-3 rounded-xl">
