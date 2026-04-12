@@ -4,7 +4,7 @@
     "slug": "anime",
     "version": "Initial Release",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png", // App Icon
+    "icon": "./assets/images/icon.png",
     "scheme": "anime",
     "userInterfaceStyle": "dark",
     "ios": {
@@ -31,11 +31,13 @@
         {
           "backgroundColor": "#208AEF",
           "android": {
-            "image": "./assets/images/splash-icon.png", // Splash Icon
+            "image": "./assets/images/splash-icon.png",
             "imageWidth": 76
           }
         }
-      ]
+      ],
+      "expo-image",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

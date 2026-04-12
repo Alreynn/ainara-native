@@ -82,7 +82,7 @@ const App = () => {
                 returnKeyType="search"
                 showsVerticalScrollIndicator={false}
             >
-                <TextInput placeholder="Cari anime disini..." className="w-full rounded-3xl border border-indigo-300 py-2 px-3 my-5 outline-none text-white placeholder:text-gray-300" />
+                <TextInput placeholder="Cari anime disini..." className="w-full rounded-3xl border border-indigo-300 py-2 px-3 my-5 outline-none caret-white text-white placeholder:text-gray-300" />
                 
                 {/* Recent Section */}
                 {!isLoaded && !isError && (
@@ -111,7 +111,7 @@ const App = () => {
                             data={recent}
                             numColumns={3}
                             contentContainerStyle={{ gap: 3 * 4, marginBottom: 8 * 4, }}
-                            renderItem={({item}) => <AnimeBox animeId={item.animeId} title={item.title} poster={item.poster} episodes={item.episodes} lastReleaseDate={item.latestReleaseDate} />}
+                            renderItem={({item}) => <AnimeBox animeId={item.animeId} title={item.title} poster={item.poster} score={item.score} episodes={item.episodes} lastReleaseDate={item.latestReleaseDate} />}
                             keyExtractor={item => item.animeId}
                             scrollEnabled={false}
                         />
@@ -166,7 +166,7 @@ const App = () => {
                             data={completed}
                             numColumns={3}
                             contentContainerStyle={{ justifyContent: 'space-around', gap: 3 * 4, }}
-                            renderItem={({item}) => <AnimeBox animeId={item.animeId} title={item.title} poster={item.poster} episodes={item.episodes} lastReleaseDate={item.lastReleaseDate} />}
+                            renderItem={({item}) => <AnimeBox animeId={item.animeId} title={item.title} poster={item.poster} score={item.score} episodes={item.episodes} lastReleaseDate={item.lastReleaseDate} />}
                             keyExtractor={item => item.animeId}
                             scrollEnabled={false}
                         />

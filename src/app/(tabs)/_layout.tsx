@@ -24,6 +24,10 @@ const TabLayout = () => {
             title: "Semua",
             tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? "tv" : "tv-outline"} size={24} color={color}></Ionicons>
         }} />
+        <Tabs.Screen name="Settings" options={{
+            title: "Pengaturan",
+            tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? "settings" : "settings-outline"} size={24} color={color}></Ionicons>
+        }} />
     </Tabs>
   )
 }
