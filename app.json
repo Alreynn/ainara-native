@@ -4,7 +4,7 @@
     "slug": "anime",
     "version": "Initial Release",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png", // App Icon
+    "icon": "./assets/images/icon.png",
     "scheme": "anime",
     "userInterfaceStyle": "dark",
     "ios": {
@@ -31,7 +31,7 @@
         {
           "backgroundColor": "#208AEF",
           "android": {
-            "image": "./assets/images/splash-icon.png", // Splash Icon
+            "image": "./assets/images/splash-icon.png",
             "imageWidth": 76
           }
         }
@@ -46,6 +46,12 @@
       "eas": {
         "projectId": "29a4eb89-859d-415d-823d-e3a33260d2b0"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/29a4eb89-859d-415d-823d-e3a33260d2b0"
     }
   }
 }
